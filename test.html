@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hiệu Ứng Tuyết Rơi</title>
+  <style>
+    body {
+      background: #2b3e50;
+      margin: 0;
+      overflow: hidden;
+    }
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      font-size: 10px;
+      opacity: 0.8;
+      pointer-events: none;
+      user-select: none;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const snowflakeCount = 100;
+
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.innerHTML = '&#10052;';
+      snowflake.style.left = `${Math.random() * 100}vw`;
+      snowflake.style.animationDuration = `${5 + Math.random() * 5}s`;
+      snowflake.style.fontSize = `${10 + Math.random() * 20}px`;
+      snowflake.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(snowflake);
+    }
+
+    for (let i = 0; i < snowflakeCount; i++) {
+      createSnowflake();
+    }
+  </script>
+</body>
+</html>
